@@ -1,0 +1,16 @@
+# Downloaded data (CUB-200-2011 archive + extracted images, ~1.2GB) and the
+# cloned hierarchy repo -- both are re-fetched automatically by
+# src/download_data.py and src/hierarchy.py, so committing them would just
+# bloat the repo for no reason.
+data/
+
+# Trained checkpoints are too large for a normal git push (ResNet-101
+# state_dict + Adam optimizer state is well over GitHub's 100MB per-file
+# limit). See README.md "Checkpoints" section for why these are not
+# committed and how reproduce.sh regenerates them.
+checkpoints/*.pt
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
