@@ -1,0 +1,17 @@
+{
+  "baseline": {
+    "run": "baseline",
+    "finished_epoch": 15,
+    "requested_epochs": 15,
+    "complete": true,
+    "test_accuracy": 77.18
+  },
+  "hicl": {
+    "run": "hicl",
+    "finished_epoch": 15,
+    "requested_epochs": 15,
+    "complete": true,
+    "test_accuracy": 79.32
+  },
+  "difference_points": 2.14
+}
