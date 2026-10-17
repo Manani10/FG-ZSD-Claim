@@ -153,17 +153,6 @@ See `REPORT.md` for the full discussion, including the number the paper
 never reports (the scaled-down seen-class CUB-200 result itself), and the
 open questions that weren't resolved.
 
-## Honesty notes the viva will probably come back to
-
-- The hicl loss implementation here is deliberately unoptimised: it loops
-  over the batch and recomputes similarity against all ~383 taxonomy
-  nodes per sample, rather than batching that computation. It is correct
-  but slow, and training wall-clock time was not recorded for this run —
-  see `REPORT.md`.
-- `src/hierarchy.py` asserts (rather than silently assuming) that leaf
-  node ids 1–200 in the third-party taxonomy file line up with CUB's own
-  class ids 001–200, because an early version of this code found that
-  the file's node ids did *not* align the way a first guess suggested
-  (see the module docstring and `_sanity_check_leaf_alignment`).
+check_leaf_alignment`).
 - No hyperparameter sweep was run for `hicl_weight`; 0.1 was chosen once
   and not tuned, which the write-up says plainly.
