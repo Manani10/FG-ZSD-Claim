@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# The one documented command the assignment brief asks for:
 # clean checkout -> every number and figure in the write-up.
 #
 #   conda env create -f environment.yml
