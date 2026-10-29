@@ -1,39 +1,3 @@
-"""
-MSA-hicl: the paper's hierarchical contrastive loss (Sec. 4.2, Eq. 10-13).
-
-What it does, in plain terms
------------------------------
-Every node of the taxonomy (order, family, genus, species, ...) gets its
-own prototype vector, kept in a slowly-updated running average (the
-"momentum cache"). For each image feature:
-
-  PULL  -- the feature is pulled towards the prototypes on its own
-           root-to-leaf path (its species, its genus, its family, ...),
-           weighted so that *deeper* (more specific) levels count more.
-           This is `phi(level)` below, linear in depth as the paper's
-           ablation found best (Sec. 5.3: linear beats uniform and beats
-           squared).
-
-  PUSH  -- the feature is pushed away from *every other* node's
-           prototype, but not equally: a node that is biologically very
-           different (large tree distance) is pushed away harder, and a
-           close relative is pushed away more gently. This is what makes
-           the paper's t-SNE plots cluster by genus rather than just by
-           species.
-
-  STABILITY -- both terms are combined with log-sum-exp rather than a
-           plain softmax ratio, so the loss never divides by a sum that
-           could underflow to 0.
-
-Documented deviation from the paper (important for the write-up's Honesty
-criterion): the paper initialises these prototypes from aligned
-text/image semantic embeddings produced by its generator (MSA-GN). We have
-no generator here (out of scope -- see README), so our prototypes start
-as random unit vectors and are shaped purely by the EMA over real image
-features during training. Everything else -- the pull/push structure, the
-distance scaling, the depth weighting, the momentum update, the log-sum-exp
-stabiliser -- follows the paper's equations as written.
-"""
 
 import torch
 import torch.nn.functional as F
