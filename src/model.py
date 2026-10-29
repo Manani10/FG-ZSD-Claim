@@ -1,14 +1,3 @@
-"""
-Backbone + classifier head.
-
-The paper's detector backbone is Faster R-CNN with a ResNet-101 trunk
-(Sec. 5.1). Our scoped-down claim is about the *classification* effect of
-MSA-hicl, not detection, so we keep the ResNet-101 trunk (ImageNet
-pretrained, matching the paper) but drop Faster R-CNN's region-proposal
-machinery entirely and attach a plain linear classifier head instead. This
-is the single biggest scope reduction versus the original paper and is
-called out in the README/write-up, not buried here.
-"""
 
 import torch.nn as nn
 from torchvision import models
