@@ -1,21 +1,3 @@
-"""
-Checkpointed training loop for both the baseline (cross-entropy only) and
-treatment (cross-entropy + MSA-hicl) runs.
-
-Resumability: after every epoch we save model + optimizer state (and, for
-the hicl run, the momentum-cache prototypes) to
-checkpoints/<run_name>.pt. If that file already exists and reports a
-finished epoch >= --epochs, training is skipped entirely; if it exists but
-is partway through, we resume from the next epoch. This is what let the
-original Colab runs survive free-tier session disconnects without losing
-work, and it is what makes `scripts/run_all.sh` safe to re-run after an
-interruption instead of re-training from scratch every time.
-
-Usage
------
-    python -m src.train --run baseline --data-dir data --epochs 15
-    python -m src.train --run hicl     --data-dir data --epochs 15 --hicl-weight 0.1
-"""
 
 import argparse
 import os
